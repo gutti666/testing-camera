@@ -65,17 +65,19 @@
   </style>
 </head>
 <body>
-  <h1>Image Capture and Model Selection</h1>
+  <h1>Test Image capture and procces with model</h1>
 
   <form name="DataToIA" id="DataToIA">
-
+    <!-- <video id="player" controls autoplay hidden="true"></video>
+    <button id="capture">Capture</button>
+    <canvas id="canvas" width="320" height="240"></canvas> -->
     <label for="camera">Capture Image:</label>
     <input id="camera" name="camera" type="file" accept="image/*;capture=camera" />
 
     <label for="model">Select Model:</label>
     <select name="model" id="model">
-      <option value="openAi">Open AI</option>
-      <option value="gemeni">Gemeni Ai</option>
+      <option value="openai">Open AI</option>
+      <option value="gemeni">Gemeni</option>
     </select>
 
     <button type="submit">Send Form</button>
