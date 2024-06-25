@@ -62,7 +62,12 @@ window.onload = function () {
 
       const datosRespuesta = await respuesta.json();
 
-      response.innerHTML = `<span>${datosRespuesta.description}</span>`;
+      response.innerHTML = `<span>${datosRespuesta.description}</span>
+      
+      <br>
+      <br><img src="${imagenBase64}" style="
+    width: 500px;"
+>`;
     } catch (error) {
       console.error("Error al enviar datos:", error);
     }
