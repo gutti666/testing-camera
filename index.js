@@ -1,7 +1,6 @@
 window.onload = function () {
   console.log("INIT JS");
 
-
   var urlIMage = "";
 
   var form = document.getElementById("DataToIA");
@@ -47,20 +46,23 @@ window.onload = function () {
       });
 
       const urlAPI = "http://34.48.164.165:8000/analyze"; // Reemplaza con la URL real de tu API
-
+  
       const respuesta = await fetch(urlAPI, {
         method: "POST",
-        body: {
+        headers: {
+          "Content-Type": "application/json", // Indica que el body es JSON
+        },
+        body: JSON.stringify({
           model,
           base64_image: imagenBase64,
-          useragent:navigator.userAgent,
+          useragent: navigator.userAgent,
           mac: params.get("mac"),
-        },
+        }),
       });
 
       const datosRespuesta = await respuesta.json();
 
-      response.innerHTML = `<span>${datosRespuesta}</span>`;
+      response.innerHTML = `<span>${datosRespuesta.description}</span>`;
     } catch (error) {
       console.error("Error al enviar datos:", error);
     }
