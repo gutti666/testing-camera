@@ -1,21 +1,45 @@
 window.onload = function () {
   console.log("INIT JS");
-  // console.log(navigator.getUserMedia())
-  // if (navigator.getUserMedia) {
-    navigator.getUserMedia({ video: true, audio: false },succes,error);
+  console.log(window.navigator.platform)
+  var response = document.getElementById("response");
+
+  response.innerHTML = `<span>${window.navigator.platform}</span>`;
+
+  var urlIMage = "";
+  // if (navigator.getUserMedia && navigator.o) {
+  //   navigator.getUserMedia({ video: true, audio: false }, succes, error);
+
+  //   function succes() {
+  //     const player = document.getElementById("player");
+  //     const canvas = document.getElementById("canvas");
+  //     const context = canvas.getContext("2d");
+  //     const captureButton = document.getElementById("capture");
+  //     const constraints = {
+  //       video: true,
+  //     };
+
+  //     captureButton.addEventListener("click", async (e) => {
+  //       context.drawImage(player, 0, 0, canvas.width, canvas.height);
+  //       urlIMage = canvas.toDataURL();
+  //       player.srcObject.getVideoTracks().forEach((track) => track.stop());
+  //     });
+
+  //     // Attach the video stream to the video element and autoplay.
+  //     navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+  //       player.srcObject = stream;
+  //     });
+  //   }
+  //   function error() {}
   // }
-  function succes(){
-
-  }
-  function error(){
-
-  }
   var form = document.getElementById("DataToIA");
   var response = document.getElementById("response");
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const model = document.getElementById("model").value;
-    const image = document.getElementById("camera").files[0];
+    if (navigator.getUserMedia) {
+    } else {
+      const image = document.getElementById("camera").files[0];
+    }
     let params = new URLSearchParams(window.location.search);
     const reader = new FileReader();
 
