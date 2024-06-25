@@ -1,9 +1,9 @@
 window.onload = function () {
   console.log("INIT JS");
-  console.log(window.navigator.platform)
+  console.log(window.navigator.oscpu )
   var response = document.getElementById("response");
 
-  response.innerHTML = `<span>${window.navigator.platform}</span>`;
+  response.innerHTML = `<span>${window.navigator.oscpu}</span>`;
 
   var urlIMage = "";
   // if (navigator.getUserMedia && navigator.o) {
