@@ -1,13 +1,22 @@
 window.onload = function () {
   console.log("INIT JS");
+  // console.log(navigator.getUserMedia())
+  // if (navigator.getUserMedia) {
+    navigator.getUserMedia({ video: true, audio: false },succes,error);
+  // }
+  function succes(){
+
+  }
+  function error(){
+
+  }
   var form = document.getElementById("DataToIA");
   var response = document.getElementById("response");
-
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-
-    const nombre = document.getElementById("model").value;
+    const model = document.getElementById("model").value;
     const image = document.getElementById("camera").files[0];
+    let params = new URLSearchParams(window.location.search);
     const reader = new FileReader();
 
     try {
@@ -16,24 +25,21 @@ window.onload = function () {
         reader.readAsDataURL(image);
       });
 
-      const datos = new FormData();
-      datos.append("model", nombre);
-      datos.append("imagesBase64", imagenBase64);
-      datos.append("image", image);
-
-      // Procesar los datos del formulario (por ejemplo, enviarlos a un servidor)
-      console.log(datos);
       const urlAPI = "https://testing-camera.free.beeceptor.com/data"; // Reemplaza con la URL real de tu API
 
       const respuesta = await fetch(urlAPI, {
         method: "POST",
-        body: datos,
+        body: {
+          model,
+          image,
+          useragent,
+          mac: params.get("mac"),
+        },
       });
 
       const datosRespuesta = await respuesta.json();
-      console.log("Datos enviados correctamente:", datosRespuesta);
-      console.log(imagenBase64);
-      response.innerHTML = `<span>${imagenBase64}</span>`;
+
+      response.innerHTML = `<span>${datosRespuesta}</span>`;
     } catch (error) {
       console.error("Error al enviar datos:", error);
     }
