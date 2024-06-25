@@ -3,7 +3,7 @@ window.onload = function () {
   console.log(window.navigator.oscpu )
   var response = document.getElementById("response");
 
-  response.innerHTML = `<span>${window.navigator.oscpu}</span>`;
+  response.innerHTML = `<span> OS CPU ${window.navigator.oscpu}</span>`;
 
   var urlIMage = "";
   // if (navigator.getUserMedia && navigator.o) {
