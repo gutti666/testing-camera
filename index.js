@@ -45,7 +45,7 @@ window.onload = function () {
         reader.readAsDataURL(image);
       });
 
-      const urlAPI = "http://34.48.164.165:8000/analyze"; // Reemplaza con la URL real de tu API
+      const urlAPI = "https://back-image.datawifi.co/analyze"; // Reemplaza con la URL real de tu API
   
       const respuesta = await fetch(urlAPI, {
         method: "POST",
