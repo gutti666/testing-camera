@@ -69,6 +69,8 @@ window.onload = function () {
     width: 500px;"
 >`;
     } catch (error) {
+      response.innerHTML = `<span>${error}</span>`
+
       console.error("Error al enviar datos:", error);
     }
   });
